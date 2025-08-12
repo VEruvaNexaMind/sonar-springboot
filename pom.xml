@@ -39,9 +39,8 @@
 
     <properties>
         <!-- SonarCloud configuration -->
-        <sonar.organization>YOUR_ORGANIZATION</sonar.organization>
-        <sonar.projectKey>YOUR_PROJECT_KEY</sonar.projectKey>
+        <sonar.organization>veruvanexamind</sonar.organization>
+        <sonar.projectKey>veruvanexamind_springboot</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.login>YOUR_SONARCLOUD_TOKEN</sonar.login>
     </properties>
 </project>
