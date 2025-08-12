@@ -32,10 +32,17 @@ jobs:
           path: ~/.m2/repository
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+      - name: Debug Environment
+        run: |
+          echo "SONAR_TOKEN is set: ${{ secrets.SONAR_TOKEN != '' }}"
+          echo "Project Key: veruvanexamind_springboot"
+          echo "Organization: veruvanexamind"
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          projectKey: 'veruvanexamind_springboot'
-          organization: 'veruvanexamind'
+        run: |
+          mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=veruvanexamind_springboot \
+            -Dsonar.organization=veruvanexamind \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
